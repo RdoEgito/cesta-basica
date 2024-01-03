@@ -6,12 +6,23 @@ const PORT = 5000;
 
 // Conexão com o banco de dados MongoDB
 const connection = mongoose.createConnection('mongodb+srv://test:kwBe5Tn5FNs4XesI@cluster0.zj1tsoh.mongodb.net/?retryWrites=true&w=majority');
-const db = connection.useDb('Test');
+const db = connection.useDb('cesta_basica');
 
 // Definindo um modelo de exemplo (um modelo de coleção)
-const Todo = mongoose.model('Todo', { text: String });
+const ItemToDonate = db.model('ItemToDonate', { text: String, quantidadeNecessaria: Number }, 'items_para_doacao');
 
+app.use(express.json())
 app.use(cors());
+
+app.get('/api/itemsToDonate', async (req, res) => {
+  try {
+    const itemToDonate = await ItemToDonate.find();
+    console.log(itemToDonate);
+    res.json(itemToDonate);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
 // Rota para buscar todos os itens do banco de dados
 app.get('/api/todos', async (req, res) => {
@@ -23,12 +34,14 @@ app.get('/api/todos', async (req, res) => {
   }
 });
 
-app.post('/api/todos', async (req, res) => {
+app.post('/api/add-todo', (req, res) => {
     try {
+      console.log(req.body);
       const { text } = req.body;
       const newTodo = new Todo({ text });
-      await newTodo.save();
-      res.status(201).json(newTodo);
+      newTodo.save().then(
+        res.status(201).json(newTodo)
+      );
     } catch (err) {
       res.status(400).json({ message: err.message });
     }

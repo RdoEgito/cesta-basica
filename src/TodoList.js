@@ -25,7 +25,8 @@ function TodoList() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/todos', {
+      console.log(newTodoText, JSON.stringify({ text: newTodoText }));
+      const response = await fetch('http://localhost:5000/api/add-todo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -54,7 +55,7 @@ function TodoList() {
       </form>
       <ul>
         {todos.map((todo) => (
-          <li /*key={todo._id}*/>{todo.text}</li>
+          <li key={todo._id}>{todo.text}</li>
         ))}
       </ul>
     </div>
