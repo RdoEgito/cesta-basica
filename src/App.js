@@ -1,28 +1,31 @@
-import './App.css';
+import './App.css'
 import React, { useState } from 'react';
-import Item from './Item';
-import TodoList from './TodoList';
+import TableItem from './TableItems';
 
 const App = () => {
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
-  const [selectedItemToDonate, setSelectedItemToDonate] = useState('Opção 1');
+  const [selectedItems, setSelectedItems] = useState([]);
 
-  const quantities = [1, 2, 3, 4]
-  const itemsToDonate = ['Opção 1', 'Opção 2', 'Opção 3'];
-
-  const handleSelectQuantityChange = (event) => {
-    setSelectedQuantity(event.target.value);
-  };
-
-  const handleSelectItemToDonateChange = (event) => {
-    setSelectedItemToDonate(event.target.value);
-  };
+  const handleQuantityChange = (s) => {
+    console.log(s)
+    setSelectedItems(s)
+  }
 
   return (
-    <div>
-      <h1>Exemplo de Select Component</h1>
-      <Item onChangeQuantity={handleSelectQuantityChange} onChangeItemToDonate={handleSelectItemToDonateChange}/>
-      <p>Você selecionou: {selectedQuantity} - {selectedItemToDonate}</p>
+    <div className='App'>
+      <h2>Cesta Básica - IP Mandacaru</h2>
+      <div className='flex-container'>
+        <div className='flex-item'>
+          <TableItem onChangeQuantity={handleQuantityChange} />
+        </div>
+        <div className='flex-item'>
+            <h2>Itens Selecionados</h2>
+            <ul>
+                {selectedItems.map((item, index) => (
+                <li key={index}>{item.name} - {item.value}</li>
+                ))}
+            </ul>
+        </div>
+      </div>
     </div>
   );
 };

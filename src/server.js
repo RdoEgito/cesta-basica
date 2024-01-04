@@ -2,51 +2,48 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
-const PORT = 5000;
-
-// Conexão com o banco de dados MongoDB
-const connection = mongoose.createConnection('mongodb+srv://test:kwBe5Tn5FNs4XesI@cluster0.zj1tsoh.mongodb.net/?retryWrites=true&w=majority');
-const db = connection.useDb('cesta_basica');
-
-// Definindo um modelo de exemplo (um modelo de coleção)
-const ItemToDonate = db.model('ItemToDonate', { text: String, quantidadeNecessaria: Number }, 'items_para_doacao');
 
 app.use(express.json())
 app.use(cors());
 
-app.get('/api/itemsToDonate', async (req, res) => {
+// Conexão com o MongoDB
+const connection = mongoose.createConnection('mongodb+srv://test:kwBe5Tn5FNs4XesI@cluster0.zj1tsoh.mongodb.net/?retryWrites=true&w=majority');
+const db = connection.useDb('cesta_basica');
+
+// Definição do esquema do documento
+const itemSchema = new mongoose.Schema({
+  item: String,
+  quantidadeNecessaria: Number
+});
+
+// Modelo para a collection 'items_para_doacao'
+const Item = db.model('Item', itemSchema, 'items_para_doacao');
+
+// Rota GET para obter dados do MongoDB
+app.get('/api/items', async (req, res) => {
   try {
-    const itemToDonate = await ItemToDonate.find();
-    console.log(itemToDonate);
-    res.json(itemToDonate);
+    const items = await Item.find();
+    items.sort(compare)
+    res.json(items);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// Rota para buscar todos os itens do banco de dados
-app.get('/api/todos', async (req, res) => {
-  try {
-    const todos = await Todo.find();
-    res.json(todos);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+app.listen(3001, () => {
+  console.log('Server running on port 3001');
+});
+
+function compare(a, b) {
+  // Use toUpperCase() to ignore character casing
+  const itemA = a.item.toUpperCase();
+  const itemB = b.item.toUpperCase();
+
+  let comparison = 0;
+  if (itemA > itemB) {
+    comparison = 1;
+  } else if (itemA < itemB) {
+    comparison = -1;
   }
-});
-
-app.post('/api/add-todo', (req, res) => {
-    try {
-      console.log(req.body);
-      const { text } = req.body;
-      const newTodo = new Todo({ text });
-      newTodo.save().then(
-        res.status(201).json(newTodo)
-      );
-    } catch (err) {
-      res.status(400).json({ message: err.message });
-    }
-  });
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+  return comparison;
+}

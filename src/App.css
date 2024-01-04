@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 10px;
 }
 
 .App-logo {
@@ -34,5 +35,25 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+
+.flex-container {
+  display: flex;
+  flex-direction: row; /* Os itens ficarão lado a lado */
+  flex-wrap: wrap; /* Se houver espaço insuficiente, os itens quebrarão para a próxima linha */
+}
+
+.flex-item {
+  width: 50%; /* Cada item ocupará 50% da largura */
+  box-sizing: border-box; /* Para incluir padding e bordas na largura definida */
+}
+
+/* Media query para celular */
+@media (max-width: 767px) {
+  .flex-item {
+    width: 100%; /* Em telas menores que 767px, os itens ocuparão 100% da largura */
   }
 }
