@@ -4,12 +4,12 @@
     "functions": [
       {
         "name": "frontend",
-        "src": "src/api/index.js",
+        "src": "src/index.js",
         "triggers": ["http"]
       },
       {
         "name": "backend",
-        "src": "src/server.js",
+        "src": "src/api/server.js",
         "triggers": ["http"]
       }
     ]
