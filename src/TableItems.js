@@ -75,7 +75,7 @@ const TableItem = ({ onChangeQuantity }) => {
         console.log(selectedValues)
     
         const selectedValues = updatedData.map((item) => item.selectedValue);
-        onListUpdate(selectedValues); // Retornar a lista ao componente pai
+        onChangeQuantity(selectedValues); // Retornar a lista ao componente pai
       };
 
     return (
