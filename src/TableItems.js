@@ -70,7 +70,7 @@ const TableItem = ({ onChangeQuantity }) => {
     const handleSelectChange = (index, newValue) => {
         const updatedData = [...databaseItems];
         updatedData[index].selectedValue = newValue;
-        setTableData(updatedData);
+        setDatabaseItems(updatedData);
 
         console.log(selectedValues)
     
