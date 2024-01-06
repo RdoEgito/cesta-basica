@@ -1,4 +1,5 @@
 import './TableItem.css'
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 const TableItem = ({ onChangeQuantity }) => {
@@ -31,25 +32,38 @@ const TableItem = ({ onChangeQuantity }) => {
         onChangeQuantity(selectedItems);
       };
     
+    // useEffect(() => {
+    //     fetch('https://cesta-basica-api.vercel.app/api/items') // Rota definida no servidor para obter os itens
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         // Atualiza o estado com os dados obtidos do backend
+    //         setDatabaseItems(data);
+
+    //         console.log(data);
+
+    //         databaseItems.forEach(item => {
+    //             setSelectedValues([...selectedValues, {
+    //                 key: item.key,
+    //                 name: item.item,
+    //                 value: 0
+    //                 }]);
+    //                 console.log(selectedValues);
+    //         });
+    //     })
+    //     .catch(error => console.error('Erro ao buscar os itens:', error));
+    // }, []);
+
     useEffect(() => {
-        fetch('https://cesta-basica-api.vercel.app/api/items') // Rota definida no servidor para obter os itens
-        .then(response => response.json())
-        .then(data => {
-            // Atualiza o estado com os dados obtidos do backend
-            setDatabaseItems(data);
-
-            console.log(data);
-
-            databaseItems.forEach(item => {
-                setSelectedValues([...selectedValues, {
-                    key: item.key,
-                    name: item.item,
-                    value: 0
-                    }]);
-                    console.log(selectedValues);
-            });
-        })
-        .catch(error => console.error('Erro ao buscar os itens:', error));
+    const fetchData = async () => {
+        try {
+          const response = await axios.get('https://cesta-basica-api.vercel.app/api/items');
+          setDatabaseItems(response.data);
+        } catch (error) {
+          console.error('Erro ao obter dados:', error);
+        }
+      };
+  
+      fetchData();
     }, []);
 
     return (
