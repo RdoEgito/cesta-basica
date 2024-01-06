@@ -32,7 +32,7 @@ const TableItem = ({ onChangeQuantity }) => {
       };
     
     useEffect(() => {
-        fetch('/items') // Rota definida no servidor para obter os itens
+        fetch('api/items') // Rota definida no servidor para obter os itens
         .then(response => response.json())
         .then(data => {
             // Atualiza o estado com os dados obtidos do backend
