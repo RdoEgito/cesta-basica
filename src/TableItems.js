@@ -5,32 +5,33 @@ import React, { useState, useEffect } from 'react';
 const TableItem = ({ onChangeQuantity }) => {
     const [databaseItems, setDatabaseItems] = useState([]);
     const [selectedValues, setSelectedValues] = useState([]);
+    const [items, setItems] = useState([]);
 
-    const handleSelectChange = (itemKey, itemName, itemValue) => {
-        if (selectedValues.find(item => item.key === itemKey)) {
-            const newItens = selectedValues.map(item =>
-                item.key === itemKey ? { ...item, value: itemValue} : item);
-            console.log("if", newItens);
-            setSelectedValues({selectedValues: newItens});
-            console.log("if", selectedValues);
-        } else {
-            const newItem = {
-                key: itemKey,
-                name: itemName,
-                value: itemValue
-            };
-            console.log("else", newItem)
-            setSelectedValues({selectedValues: [...selectedValues, newItem]});
-            console.log("else", selectedValues);
-        }
+    // const handleSelectChange = (itemKey, itemName, itemValue) => {
+    //     if (selectedValues.find(item => item.key === itemKey)) {
+    //         const newItens = selectedValues.map(item =>
+    //             item.key === itemKey ? { ...item, value: itemValue} : item);
+    //         console.log("if", newItens);
+    //         setSelectedValues({selectedValues: newItens});
+    //         console.log("if", selectedValues);
+    //     } else {
+    //         const newItem = {
+    //             key: itemKey,
+    //             name: itemName,
+    //             value: itemValue
+    //         };
+    //         console.log("else", newItem)
+    //         setSelectedValues({selectedValues: [...selectedValues, newItem]});
+    //         console.log("else", selectedValues);
+    //     }
         
-        const selectedItems = selectedValues
-            .filter(item => item.value > 0)
-            // .map(item => ({ name: item, value: selectedValues[item] }));
-        console.log("Selected Items:", selectedItems);
+    //     const selectedItems = selectedValues
+    //         .filter(item => item.value > 0)
+    //         // .map(item => ({ name: item, value: selectedValues[item] }));
+    //     console.log("Selected Items:", selectedItems);
         
-        onChangeQuantity(selectedItems);
-      };
+    //     onChangeQuantity(selectedItems);
+    //   };
     
     // useEffect(() => {
     //     fetch('https://cesta-basica-api.vercel.app/api/items') // Rota definida no servidor para obter os itens
@@ -66,6 +67,17 @@ const TableItem = ({ onChangeQuantity }) => {
       fetchData();
     }, []);
 
+    const handleSelectChange = (index, newValue) => {
+        const updatedData = [...databaseItems];
+        updatedData[index].selectedValue = newValue;
+        setTableData(updatedData);
+
+        console.log(selectedValues)
+    
+        const selectedValues = updatedData.map((item) => item.selectedValue);
+        onListUpdate(selectedValues); // Retornar a lista ao componente pai
+      };
+
     return (
         <div>
             <table className="database-table">
@@ -84,7 +96,7 @@ const TableItem = ({ onChangeQuantity }) => {
                     <td>{item.quantidadeNecessaria}</td>
                     <td>{item.quantidadeDoada}</td>
                     <td>
-                        <select onChange={(e) => handleSelectChange(item.key, item.item, parseInt(e.target.value))} className='custom-select'>
+                        <select onChange={(e) => handleSelectChange(item.key, parseInt(e.target.value))} className='custom-select'>
                             {[...Array(item.quantidadeNecessaria - item.quantidadeDoada + 1).keys()].map((i) => (
                                 <option key={i} value={i}>
                                     {i}
