@@ -32,7 +32,7 @@ const TableItem = ({ onChangeQuantity }) => {
       };
     
     useEffect(() => {
-        fetch('http://localhost:3001/api/items') // Rota definida no servidor para obter os itens
+        fetch('https://cesta-basica-api.vercel.app/api/items') // Rota definida no servidor para obter os itens
         .then(response => response.json())
         .then(data => {
             // Atualiza o estado com os dados obtidos do backend
