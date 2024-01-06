@@ -1,0 +1,17 @@
+{
+    "appName": "cesta-basica",
+    "framework": "react",
+    "functions": [
+      {
+        "name": "frontend",
+        "src": "src/api/index.js",
+        "triggers": ["http"]
+      },
+      {
+        "name": "backend",
+        "src": "src/server.js",
+        "triggers": ["http"]
+      }
+    ]
+  }
+  
