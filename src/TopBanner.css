@@ -1,0 +1,21 @@
+.top-banner {
+  background-color: darkgreen;
+  display: flex;
+  align-items: center;
+  pading: 10px;
+}
+
+.top-banner img {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+}
+
+.top-banner div {
+  color: white;
+}
+
+.top-banner p {
+  margin: 0;
+  font-size: 16px;
+}
