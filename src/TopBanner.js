@@ -12,4 +12,4 @@ const TopBanner = () => {
   );
 }
 
-expost default TopBanner;
+export default TopBanner;
