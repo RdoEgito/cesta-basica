@@ -1,3 +1,4 @@
+import './SelectComponent.css';
 import React, { useState } from 'react';
 
 const SelectComponent = ({ itemList, onItemChange, onNumberChange }) => {
