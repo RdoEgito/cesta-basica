@@ -1,8 +1,8 @@
 import './App.css'
-import './SelectComponent.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import TableItem from './TableItems';
+import TopBanner from './TopBanner';
 import SelectComponent from './SelectComponent';
 import NameComponent from './NameComponent';
 
@@ -39,7 +39,7 @@ const App = () => {
 
   return (
     <div className='App'>
-      <h2>Cesta Básica - IP Mandacaru</h2>
+      <TopBanner />
       <div className='flex-container'>
         <div className='flex-item'>
           <NameComponent
