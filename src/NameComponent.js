@@ -12,15 +12,12 @@ const NameComponent = ({ onNameChange }) => {
 
   return (
     <div className="name-container">
-      <label htmlFor="nameInput" className="name-label">
-        Nome:
-      </label>
       <input
         type="text"
         id="nameInput"
         value={name}
         onChange={handleInputChange}
-        placeholder="Digite seu name"
+        placeholder="Digite seu nome"
         className="name-input"
       />
     </div>

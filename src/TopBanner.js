@@ -1,14 +1,14 @@
 import './TopBanner.css';
 import React from 'react';
+import logo from './images/logo.png'
 
 const TopBanner = () => {
   return (
     <div className='top-banner'>
-      <img src='logo.png' alt='Logo IP Mandacaru' />
-      <div>
+      <img src={logo} alt='Logo IP Mandacaru' />
+      {/* <div>
         <p>Cesta Básica</p>
-        <p>IP Mandacaru</p>
-      </div>
+      </div> */}
     </div>
   );
 }

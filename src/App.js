@@ -5,6 +5,7 @@ import TableItem from './TableItems';
 import TopBanner from './TopBanner';
 import SelectComponent from './SelectComponent';
 import NameComponent from './NameComponent';
+import SendButton from './SendButton';
 
 const App = () => {
   const [databaseItems, setDatabaseItems] = useState([]);
@@ -49,11 +50,10 @@ const App = () => {
             onItemChange={handleItemChange}
             onNumberChange={handleNumberChange} />
           
-          {selectedItem && selectedQuantity !== null && ( // Verifica se ambos os valores estão selecionados
-            <p>
-              Item selecionado: {selectedItem}, Número selecionado: {selectedQuantity}
-            </p>
-          )}
+          <SendButton
+            item={selectedItem}
+            name={userName}
+            quantity={selectedQuantity} />
         </div>
         <div className='flex-item'>
           <TableItem
