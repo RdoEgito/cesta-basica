@@ -14,7 +14,7 @@ const App = () => {
   const [databaseItems, setDatabaseItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState('');
   const [selectedQuantity, setSelectedQuantity] = useState(0);
-  const [userName, setUserName] = useState(0);
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
   const fetchData = async () => {
