@@ -9,8 +9,6 @@ const SelectComponent = ({ itemList, onItemChange, onNumberChange }) => {
   const handleItemChange = (e) => {
     const value = e.target.value;
 
-    console.log(value);
-
     setSelectedItem(value);
     setMaxNumber(9);
     onItemChange(value);

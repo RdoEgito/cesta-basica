@@ -6,6 +6,9 @@ import TopBanner from './TopBanner';
 import SelectComponent from './SelectComponent';
 import NameComponent from './NameComponent';
 import SendButton from './SendButton';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const App = () => {
   const [databaseItems, setDatabaseItems] = useState([]);
@@ -60,6 +63,7 @@ const App = () => {
             tableItems={databaseItems} />
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

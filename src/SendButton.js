@@ -1,18 +1,33 @@
 import React from 'react';
 import axios from 'axios';
 import './SendButton.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SendButton = ({ item, quantity, name }) => {
   const handleDonation = async () => {
     try {
-      const apiUrl = 'https://cesta-basica-api.vercel.app/api/items-donated';
+      const itemsDonatedApiUrl = 'https://cesta-basica-api.vercel.app/api/items-donated';
+      const itemsToDonateApiUrl = 'https://cesta-basica-api.vercel.app/api/items-to-donate';
 
-      const requestData = { key: item, quantity, name };
+      const donatedRequestData = { key: item, quantity, name };
+      const toDonateRequestData = { key: item, quantity };
 
-      const response = await axios.post(apiUrl, requestData);
+      const responseDonated = await axios.post(itemsDonatedApiUrl, donatedRequestData);
+      console.log('Resposta da API:', responseDonated.data);
 
-      console.log('Resposta da API:', response.data);
+      const responseToDonate = await axios.post(itemsToDonateApiUrl, toDonateRequestData);
+      console.log('Resposta da API:', responseToDonate.data);
+
+      console.log(responseDonated.status, responseToDonate.status)
+      if (responseDonated.status === 201
+        && responseToDonate.status === 201){
+          toast.success('Obrigado pela sua doação! Em caso de dúvidas ou caso queira alterar a sua doação, procure um dos diáconos');
+          setTimeout(() => {window.location.reload();}, 5000);
+        }
+
     } catch (error) {
+      toast.error('Infelizmente, não foi possível processar sua doação. Tente novamente mais tarde!')
       console.error('Erro ao doar item:', error);
     }
   };
