@@ -6,7 +6,7 @@ import TopBanner from './TopBanner';
 import SelectComponent from './SelectComponent';
 import NameComponent from './NameComponent';
 import SendButton from './SendButton';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -54,6 +54,7 @@ const App = () => {
             onNumberChange={handleNumberChange} />
           
           <SendButton
+            isButtonEnabled={userName !== '' && selectedItem !== '' && selectedQuantity > 0}
             item={selectedItem}
             name={userName}
             quantity={selectedQuantity} />

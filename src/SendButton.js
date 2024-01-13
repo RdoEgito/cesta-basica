@@ -4,9 +4,12 @@ import './SendButton.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const SendButton = ({ item, quantity, name }) => {
+const SendButton = ({ isButtonEnabled, item, quantity, name }) => {
   const handleDonation = async () => {
     try {
+      console.log(item);
+      console.log(quantity);
+
       const itemsDonatedApiUrl = 'https://cesta-basica-api.vercel.app/api/items-donated';
       const itemsToDonateApiUrl = 'https://cesta-basica-api.vercel.app/api/items-to-donate';
 
@@ -34,7 +37,9 @@ const SendButton = ({ item, quantity, name }) => {
 
   return (
     <div className="button-container">
-      <button className="send-button" onClick={handleDonation}>
+      <button
+        disabled={!isButtonEnabled}
+        className={isButtonEnabled ? 'send-button' : 'send-button-disabled'} onClick={handleDonation}>
         Enviar
       </button>
     </div>
