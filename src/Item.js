@@ -1,4 +1,4 @@
-import './Item.css'
+import './Item.css';
 import React, { useState, useEffect } from 'react';
 
 const Item = ({ handleQuantityChange, handleSelectedItemChange }) => {

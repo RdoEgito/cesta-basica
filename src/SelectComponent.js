@@ -10,7 +10,14 @@ const SelectComponent = ({ itemList, onItemChange, onNumberChange }) => {
     const value = e.target.value;
 
     setSelectedItem(value);
-    setMaxNumber(9);
+
+    const selected = itemList.filter(i => i.key === value)[0];
+    setMaxNumber(
+      getNeededQuantity(
+        selected.quantidadeNecessaria,
+        selected.quantidadeDoada
+      )
+    );
     onItemChange(value);
   };
 
@@ -20,6 +27,14 @@ const SelectComponent = ({ itemList, onItemChange, onNumberChange }) => {
     setSelectedNumber(value);
     onNumberChange(value);
   };
+
+  const getNeededQuantity = (neededQuantity, donatedQuantity) => {
+    if (donatedQuantity >= neededQuantity){
+      return 0;
+    }
+
+    return neededQuantity - donatedQuantity;
+  }
 
   return (
     <div className="select-container">
