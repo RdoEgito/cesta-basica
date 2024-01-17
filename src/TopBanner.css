@@ -1,6 +1,7 @@
 .top-banner {
   background-color: #4D4D4D;
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 10px;
 }
@@ -8,7 +9,6 @@
 .top-banner img {
   width: auto;
   height: 80px;
-  margin-right: 20px;
 }
 
 .top-banner div {
