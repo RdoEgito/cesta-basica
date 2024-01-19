@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // import DonationComponent from './DonationComponent'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './DonationComponent.css'
 import axios from 'axios';
