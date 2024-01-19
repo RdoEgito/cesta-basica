@@ -17,8 +17,8 @@ const DonatedListPage = () => {
                     const item = responseItems.filter(item => item.key == donatedItem.key)[0];
                     console.log(item);
                     setDonatedItems({
-                        name: NamedNodeMap,
-                        quantity: quantidade,
+                        name: donatedItem.nome,
+                        quantity: donatedItem.quantidade,
                         itemName: item.item
                     });
                 });
