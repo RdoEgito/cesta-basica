@@ -1,6 +1,6 @@
 import React from 'react';
-import DonationPage from './pages/DonationPage'
-import DonatedListPage from './pages/DonatedListPage'
+import DonationPage from 'pages/DonationPage'
+import DonatedListPage from 'pages/DonatedListPage'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => (
