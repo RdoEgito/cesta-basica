@@ -4,7 +4,6 @@ import axios from 'axios';
 import TopBanner from './TopBanner';
 
 const DonatedListPage = () => {
-    const [databaseItems, setDatabaseItems] = useState([]);
     const [donatedItems, setDonatedItems] = useState([]);
 
     useEffect(() => {
