@@ -15,9 +15,9 @@ const TableDonatedItem = ({ tableItems }) => {
                 <tbody>
                 {tableItems.map((item, index) => (
                     <tr key={index}>
-                        <td>{item.name}</td>
-                        <td>{item.itemName}</td>
-                        <td>{item.quantity}</td>
+                        <td>{item.nome}</td>
+                        <td>{item.key}</td>
+                        <td>{item.quantidade}</td>
                     </tr>
                 ))}
                 </tbody>
