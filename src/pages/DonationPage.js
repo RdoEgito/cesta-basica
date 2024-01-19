@@ -2,11 +2,11 @@ import './DonationPage.css'
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
-import TableItem from '../components/TableItems';
-import TopBanner from '../components/TopBanner';
-import SelectComponent from '../components/SelectComponent';
-import NameComponent from '../components/NameComponent';
-import SendButton from '../components/SendButton';
+import TableItem from './components/TableItems';
+import TopBanner from './components/TopBanner';
+import SelectComponent from './components/SelectComponent';
+import NameComponent from './components/NameComponent';
+import SendButton from './components/SendButton';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
