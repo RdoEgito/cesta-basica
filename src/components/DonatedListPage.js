@@ -35,7 +35,7 @@ const DonatedListPage = () => {
     return (
         <>
             <TopBanner />
-            <div className='App'>
+            <div>
                 {/* <table className="table">
                     {donatedItems.map((item, index) => (
                         <tr key={index}>
