@@ -1,7 +1,7 @@
 import './DonationComponent.css'
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import axios from 'axios';
 import TableItem from './TableItems';
 import TopBanner from './TopBanner';
 import SelectComponent from './SelectComponent';
@@ -43,30 +43,32 @@ const DonationComponent = () => {
   };
 
   return (
-    <div className='App'>
+    <>
       <TopBanner />
-      <div className='flex-container'>
-        <div className='flex-item'>
-          <NameComponent
-            onNameChange={handleNameChange} />
-          <SelectComponent
-            itemList={databaseItems}
-            onItemChange={handleItemChange}
-            onNumberChange={handleNumberChange} />
-          
-          <SendButton
-            isButtonEnabled={userName !== '' && selectedItem !== '' && selectedQuantity > 0}
-            item={selectedItem}
-            name={userName}
-            quantity={selectedQuantity} />
-        </div>
-        <div className='flex-item'>
-          <TableItem
-            tableItems={databaseItems} />
+      <div className='App'>
+        <div className='flex-container'>
+          <div className='flex-item'>
+            <NameComponent
+              onNameChange={handleNameChange} />
+            <SelectComponent
+              itemList={databaseItems}
+              onItemChange={handleItemChange}
+              onNumberChange={handleNumberChange} />
+            
+            <SendButton
+              isButtonEnabled={userName !== '' && selectedItem !== '' && selectedQuantity > 0}
+              item={selectedItem}
+              name={userName}
+              quantity={selectedQuantity} />
+          </div>
+          <div className='flex-item'>
+            <TableItem
+              tableItems={databaseItems} />
+          </div>
         </div>
       </div>
       <ToastContainer />
-    </div>
+    </>
   );
 };
 
