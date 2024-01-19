@@ -2,6 +2,7 @@ import './DonatedListPage.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TopBanner from './TopBanner';
+import TableDonatedItem from './TableDonatedItem';
 
 const DonatedListPage = () => {
     const [donatedItems, setDonatedItems] = useState([]);
@@ -35,26 +36,7 @@ const DonatedListPage = () => {
     return (
         <>
             <TopBanner />
-            <div>
-                <table className="table">
-                    <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Quantidade</th>
-                        <th>Item</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {donatedItems.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.name}</td>
-                                <td>{item.quantity}</td>
-                                <td>{item.itemName}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+            <TableDonatedItem tableItems={donatedItems} />
         </>
     );
 };
