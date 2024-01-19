@@ -1,17 +1,17 @@
-import './DonationComponent.css'
+import './DonationPage.css'
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
-import TableItem from './TableItems';
-import TopBanner from './TopBanner';
-import SelectComponent from './SelectComponent';
-import NameComponent from './NameComponent';
-import SendButton from './SendButton';
+import TableItem from '../components/TableItems';
+import TopBanner from '../components/TopBanner';
+import SelectComponent from '../components/SelectComponent';
+import NameComponent from '../components/NameComponent';
+import SendButton from '../components/SendButton';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const DonationComponent = () => {
+const DonationPage = () => {
   const [databaseItems, setDatabaseItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState('');
   const [selectedQuantity, setSelectedQuantity] = useState(0);
@@ -72,4 +72,4 @@ const DonationComponent = () => {
   );
 };
 
-export default DonationComponent;
+export default DonationPage;
