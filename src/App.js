@@ -73,9 +73,9 @@ const DonationComponent = () => {
 
 const App = () => (
   <Router>
-    <div>
+    <Switch>
       <Route path="/" exact component={DonationComponent}></Route>
-    </div>
+    </Switch>
   </Router>
 );
 
