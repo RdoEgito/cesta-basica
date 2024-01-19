@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import './DonationComponent.css'
+import DonatedList from './DonatedList'
 import axios from 'axios';
 import TableItem from './TableItems';
 import TopBanner from './TopBanner';
@@ -75,6 +76,7 @@ const App = () => (
   <Router>
     <Switch>
       <Route path="/" exact component={DonationComponent}></Route>
+      <Route path="/list" component={DonatedList}></Route>
     </Switch>
   </Router>
 );
