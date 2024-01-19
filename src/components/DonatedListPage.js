@@ -4,14 +4,14 @@ import axios from 'axios';
 import TopBanner from './TopBanner';
 
 const DonatedListPage = () => {
-    const [donatedItems, setDonatedItems] = useState([]);
+    // const [donatedItems, setDonatedItems] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 console.log("COMEÇANDO...");
-                const responseDonatedItems = await axios.get('https://cesta-basica-api.vercel.app/api/donated-items');
-                console.log(responseDonatedItems);
+                // const responseDonatedItems = await axios.get('https://cesta-basica-api.vercel.app/api/donated-items');
+                // console.log(responseDonatedItems);
                 // const responseItems = await axios.get('https://cesta-basica-api.vercel.app/api/items');
                 // console.log(responseItems);
 
