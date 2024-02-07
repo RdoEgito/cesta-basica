@@ -31,7 +31,7 @@ const SendButton = ({ isButtonEnabled, item, quantity, name }) => {
       if (responseDonated.status === 201
         && responseToDonate.status === 201){
           toast.success('Obrigado pela sua doação! Em caso de dúvidas ou caso queira alterar a sua doação, procure um dos diáconos');
-          setTimeout(() => {window.location.reload();}, 5000);
+          setTimeout(() => {window.location.reload();}, 6000);
         }
 
     } catch (error) {
