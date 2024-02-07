@@ -26,8 +26,8 @@ const DonatedListPage = () => {
             <TopBanner />
             <TableDonatedItem tableItems={donatedItems} />
             <NavigationButtonComponent
-              targetRoute={'/'}
-              text={'🏠 Página Inicial'} />
+                targetRoute={'/'}
+                text={'🏠 Página Inicial'} />
         </>
     );
 };
