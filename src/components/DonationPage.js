@@ -8,6 +8,7 @@ import NameComponent from './NameComponent';
 import SendButton from './SendButton';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import NavigationButtonComponent from './NavigationButtonComponent';
 
 
 const DonationPage = () => {
@@ -59,6 +60,10 @@ const DonationPage = () => {
               item={selectedItem}
               name={userName}
               quantity={selectedQuantity} />
+
+            <NavigationButtonComponent
+              targetRoute={'/lista'}
+              text={'📃 Lista de doações'} />
           </div>
           <div className='flex-item'>
             <TableItem

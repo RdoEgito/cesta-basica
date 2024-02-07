@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TopBanner from './TopBanner';
 import TableDonatedItem from './TableDonatedItem';
+import NavigationButtonComponent from './NavigationButtonComponent';
 
 const DonatedListPage = () => {
     const [donatedItems, setDonatedItems] = useState([]);
@@ -24,6 +25,9 @@ const DonatedListPage = () => {
         <>
             <TopBanner />
             <TableDonatedItem tableItems={donatedItems} />
+            <NavigationButtonComponent
+              targetRoute={'/'}
+              text={'🏠 Página Inicial'} />
         </>
     );
 };

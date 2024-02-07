@@ -40,7 +40,7 @@ const SendButton = ({ isButtonEnabled, item, quantity, name }) => {
       <button
         disabled={!isButtonEnabled}
         className={isButtonEnabled ? 'send-button' : 'send-button-disabled'} onClick={handleDonation}>
-        Enviar
+        ✔️ Enviar
       </button>
     </div>
   );
