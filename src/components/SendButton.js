@@ -43,8 +43,8 @@ const SendButton = ({ isButtonEnabled, item, quantity, name }) => {
   return (
     <div className="button-container">
       <button
-        disabled={!buttonEnabled}
-        className={buttonEnabled ? 'send-button' : 'send-button-disabled'} onClick={handleDonation}>
+        disabled={!isButtonEnabled}
+        className={isButtonEnabled ? 'send-button' : 'send-button-disabled'} onClick={handleDonation}>
         ✔️ Enviar
       </button>
     </div>
