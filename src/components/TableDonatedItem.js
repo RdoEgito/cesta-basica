@@ -25,7 +25,7 @@ const TableDonatedItem = ({ tableItems }) => {
                 <tr>
                     <th>Nome</th>
                     <th>Item</th>
-                    <th className='col-quantity'>Quantidade</th>
+                    <th className='col-quantity'>Qtd</th>
                 </tr>
                 </thead>
                 <tbody>
