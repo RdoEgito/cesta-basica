@@ -33,7 +33,7 @@ const TableDonatedItem = ({ tableItems }) => {
                     <tr key={index}>
                         <td>{item.nome}</td>
                         <td>{itemDictionary[item.key]}</td>
-                        <td>{item.quantidade}</td>
+                        <td className='col-quantity'>{item.quantidade}</td>
                     </tr>
                 ))}
                 </tbody>

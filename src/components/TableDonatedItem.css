@@ -21,6 +21,7 @@
   
   .database-table .col-quantity {
     width: 15%;
+    align-items: center;
   }
 
   .custom-select {
