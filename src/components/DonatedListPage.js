@@ -36,8 +36,8 @@ const DonatedListPage = () => {
             <SpinnerComponent
                 loading={loadingTable} />
             <NavigationButtonComponent
-              targetRoute={'/'}
-              text={'🏠 Página Inicial'} />
+                targetRoute={'/'}
+                text={'🏠 Página Inicial'} />
         </>
     );
 };

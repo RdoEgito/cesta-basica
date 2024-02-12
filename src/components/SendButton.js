@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import axios from 'axios';
 import './SendButton.css';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SendButton = ({ isButtonEnabled, item, quantity, name }) => {
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
+  useEffect(() => {
+    setButtonDisabled(!isButtonEnabled);
+  }, [isButtonEnabled]);
+
   const handleDonation = async () => {
     try {
-      console.log(item);
-      console.log(quantity);
+      setButtonDisabled(true);
 
       const itemsDonatedApiUrl = 'https://cesta-basica-api.vercel.app/api/items-donated';
       const itemsToDonateApiUrl = 'https://cesta-basica-api.vercel.app/api/items-to-donate';
@@ -26,7 +31,7 @@ const SendButton = ({ isButtonEnabled, item, quantity, name }) => {
       if (responseDonated.status === 201
         && responseToDonate.status === 201){
           toast.success('Obrigado pela sua doação! Em caso de dúvidas ou caso queira alterar a sua doação, procure um dos diáconos');
-          setTimeout(() => {window.location.reload();}, 5000);
+          setTimeout(() => {window.location.reload();}, 6000);
         }
 
     } catch (error) {
@@ -38,8 +43,8 @@ const SendButton = ({ isButtonEnabled, item, quantity, name }) => {
   return (
     <div className="button-container">
       <button
-        disabled={!isButtonEnabled}
-        className={isButtonEnabled ? 'send-button' : 'send-button-disabled'} onClick={handleDonation}>
+        disabled={buttonDisabled}
+        className={buttonDisabled ? 'send-button-disabled' : 'send-button'} onClick={handleDonation}>
         ✔️ Enviar
       </button>
     </div>
