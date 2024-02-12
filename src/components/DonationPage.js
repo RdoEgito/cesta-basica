@@ -9,21 +9,27 @@ import SendButton from './SendButton';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NavigationButtonComponent from './NavigationButtonComponent';
-
+import SpinnerComponent from './SpinnerComponent';
 
 const DonationPage = () => {
   const [databaseItems, setDatabaseItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState('');
   const [selectedQuantity, setSelectedQuantity] = useState(0);
   const [userName, setUserName] = useState('');
+  const [loadingTable, setLoadingTable] = useState(false);
 
   useEffect(() => {
   const fetchData = async () => {
       try {
+        setLoadingTable(true);
+
         const response = await axios.get('https://cesta-basica-api.vercel.app/api/items');
         setDatabaseItems(response.data);
       } catch (error) {
         console.error('Erro ao obter dados:', error);
+      }
+      finally {
+        setLoadingTable(false);
       }
     };
 
@@ -68,6 +74,8 @@ const DonationPage = () => {
           <div className='flex-item'>
             <TableItem
               tableItems={databaseItems} />
+            <SpinnerComponent
+                loading={loadingTable} />
           </div>
         </div>
       </div>
